@@ -19,6 +19,21 @@ interface Ruas {
   coordinates?: string[];
 }
 
+type RuasForm = {
+  ruas_name?: string;
+  unit_id?: number;
+  long?: string;
+  km_awal?: string;
+  km_akhir?: string;
+  status?: string;
+  coordinates?: string[];
+};
+
+const mapRuasToForm = (ruas: Ruas): Partial<RuasForm> => ({
+  ...ruas,
+  long: ruas.long !== undefined ? String(ruas.long) : undefined,
+});
+
 interface Props {
   initialData: Ruas[];
   initialPage: number | string | null | undefined;
@@ -291,7 +306,7 @@ export default function RuasTable({
 
       <RuasModal
         open={modalOpen}
-        initialData={editingData ?? undefined}
+        initialData={editingData ? mapRuasToForm(editingData) : undefined}
         onClose={() => {
           setModalOpen(false);
           setEditingData(null);

@@ -1,16 +1,16 @@
-FROM node:20
+FROM node:20-slim
 
 WORKDIR /app/web
 
-# Copy package.json & package-lock.json dulu untuk caching layer
+# Copy dependency dulu
 COPY web/package*.json ./
-
-# Install dependencies bersih
 RUN npm install
 
-# Copy seluruh source code (exclude node_modules via .dockerignore)
+# Copy source
 COPY web/ .
 
-EXPOSE 3000
+# Build Next.js
+RUN npm run build
 
-CMD ["npm", "run", "dev"]
+EXPOSE 3000
+CMD ["npm", "run", "start"]

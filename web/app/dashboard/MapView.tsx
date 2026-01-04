@@ -9,6 +9,10 @@ type Coordinate = {
   coordinates: string;
 };
 
+type MapViewProps = {
+  data: Coordinate[];
+};
+
 type Ruas = {
   ruas_name: string;
   unit_id: number;
@@ -46,7 +50,7 @@ async function snapToRoadOSRM(
   return json.routes[0].geometry;
 }
 
-export default function MapView() {
+export default function MapView({ data }: MapViewProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<L.Map | null>(null);
   const layerGroupRef = useRef<L.FeatureGroup | null>(null);
