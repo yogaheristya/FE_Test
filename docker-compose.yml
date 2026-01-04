@@ -1,0 +1,8 @@
+services:
+  nextjs:
+    build: .
+    container_name: fe_test
+    ports:
+      - "3000:3000"
+    volumes:
+      - /app/web/node_modules

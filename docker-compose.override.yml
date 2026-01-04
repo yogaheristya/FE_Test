@@ -1,0 +1,11 @@
+services:
+  nextjs:
+    volumes:
+      - ./web:/app/web:delegated
+      - /app/web/node_modules
+    command: sh -c "npm install && npm run dev"
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+      - WATCHPACK_POLLING_INTERVAL=1000
