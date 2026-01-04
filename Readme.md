@@ -16,8 +16,10 @@ Make sure you've installed **Git**, **Docker**, and **Docker Compose** on your l
 
    `cd FE_Test`
 
-3. Build and start the service using Docker Compose
+3. Build and start the service using Docker Compose:
+   
    `docker compose build`
+
    `docker compose up -d`
 
 The application will be available at:
@@ -41,7 +43,9 @@ The application will be available at:
 - No hot reload or on-demand compiling during page access
 - **If the API base URL changes, please update it in `.env.local`**
 - After updating `.env.local`, rebuild the container using:
+
   `docker compose build --no-chace`
+
   `docker compose up -d`
 
 ---
